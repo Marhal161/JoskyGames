@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JoskiGames - Шахматы</title>
+    <!-- <link rel="stylesheet" href="../styles.css"> -->
+    <link rel="stylesheet" href="../main.css">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>JoskiGames - Шахматы</h1>
+            </div>
+            <div class="user-profile">
+                <p>Добро пожаловать, {{ username }}</p>
+            </div>
+        </div>
+    </header>
+    
+    <main class="game-content">
+        <h2>Шахматы</h2>
+        <p>Добро пожаловать в игру Шахматы! Здесь вы сможете...</p>
+        <button @click="startGame()">Начать игру</button>
+    </main>
+
+    <aside class="chat-container">
+        <h2>Чат</h2>
+        <div class="chat-messages" ref="chatMessages">
+            <div v-for="message in messages" :key="message.id" class="chat-message">
+                <strong>{{ message.username }}:</strong> {{ message.text }}
+            </div>
+        </div>
+        <input type="text" v-model="newMessage" placeholder="Введите сообщение..." @keydown.enter="sendMessage">
+    </aside>
+
+    <footer>
+        <p>&copy; 2024 JoskiGames. Все права защищены.</p>
+    </footer>
+
+    <script src="../main.js"></script>
+</body>
+</html>
