@@ -1,5 +1,3 @@
-Here's a complete README for the **JoskiGames** project, complete with markdown formatting, emojis, and structured sections.
-
 ---
 
 # 🎲 **JoskiGames — Сайт с Настольными Играми**
