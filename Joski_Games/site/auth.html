@@ -198,7 +198,7 @@
                     password_confirmation: '',
                     phone: ''
                 },
-                baseUrl: 'http://localhost:8000' // Укажите ваш URL API
+                baseUrl: 'http://localhost:8000'
             },
             methods: {
                 async login() {
@@ -214,7 +214,7 @@
                         });
         
                         if (!response.ok) throw new Error('Ошибка входа');
-                        this.$router.push('/main'); // Перенаправляем на страницу main.html
+                        this.$router.push('/main.html'); // Перенаправляем на страницу main.html
                     } catch (error) {
                         console.error(error);
                         alert('Ошибка входа. Пожалуйста, попробуйте снова.');
@@ -234,7 +234,7 @@
                         });
         
                         if (!response.ok) throw new Error('Ошибка регистрации');
-                        this.$router.push('/main'); // Перенаправляем на страницу main.html
+                        this.$router.push('/main.html'); // Перенаправляем на страницу main.html
                     } catch (error) {
                         console.error(error);
                         alert('Ошибка регистрации. Пожалуйста, попробуйте снова.');
