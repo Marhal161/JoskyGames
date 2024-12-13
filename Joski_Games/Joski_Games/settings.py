@@ -90,6 +90,14 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",  # URL вашего фронтенда
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8080",  # URL вашего фронтенда
+]
+
 CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'Joski_Games.urls'
