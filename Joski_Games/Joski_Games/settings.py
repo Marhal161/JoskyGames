@@ -97,7 +97,7 @@ ROOT_URLCONF = 'Joski_Games.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "site"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -109,6 +109,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'Joski_Games.wsgi.application'
 
@@ -170,7 +171,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'site'),  # Adjust this path according to your project structure
+]
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
