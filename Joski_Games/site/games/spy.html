@@ -1,45 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JoskiGames - Шпион</title>
-    <!-- <link rel="stylesheet" href="../styles.css"> -->
-    <link rel="stylesheet" href="../main.css">
-    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Шпион - Joski Games</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <div class="header-container">
-            <div class="logo">
-                <h1>JoskiGames - Шпион</h1>
-            </div>
-            <div class="user-profile">
-                <p>Добро пожаловать, {{ username }}</p>
-            </div>
-        </div>
+        <h1>Шпион</h1>
     </header>
-    
-    <main class="game-content">
-        <h2>Шпион</h2>
-        <p>Добро пожаловать в игру Шпион! Здесь вы сможете...</p>
-        <button @click="startGame()">Начать игру</button>
+    <main>
+        <section class="game-info">
+            <h2>Описание игры</h2>
+            <p>Описание игры "Шпион". Правила и настройки игры.</p>
+        </section>
+        <section class="game-options">
+            <h2>Начать игру</h2>
+            <button onclick="startSoloGame()">Соло режим</button>
+            <button onclick="startMultiPlayerGame()">С друзьями</button>
+        </section>
     </main>
-
-    <aside class="chat-container">
-        <h2>Чат</h2>
-        <div class="chat-messages" ref="chatMessages">
-            <div v-for="message in messages" :key="message.id" class="chat-message">
-                <strong>{{ message.username }}:</strong> {{ message.text }}
-            </div>
-        </div>
-        <input type="text" v-model="newMessage" placeholder="Введите сообщение..." @keydown.enter="sendMessage">
-    </aside>
-
-    <footer>
-        <p>&copy; 2024 JoskiGames. Все права защищены.</p>
-    </footer>
-
-    <script src="../main.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>

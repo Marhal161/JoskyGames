@@ -1,55 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JoskiGames - Main</title>
+    <title>Главная - Joski Games</title>
     <link rel="stylesheet" href="main.css">
-    <meta name="csrf-token" content="{{ csrf_token }}">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-
-
 </head>
 <body>
     <header>
-        <div class="header-container">
-            <div class="logo">
-                <h1>JoskiGames</h1>
-            </div>
-            <div class="user-profile">
-                <p>Добро пожаловать, {{ username }}</p>
-            </div>
+        <div class="header-content">
+            <h1>Добро пожаловать в Joski Games</h1>
         </div>
     </header>
-    
-    <main id="app" class="game-container">
-        <h2>Выберите игру</h2>
-        <div class="game-cards">
-            <div class="game-card" v-for="game in games" :key="game.id">
-                <a :href="'/site/games/' + game.id + '.html'">
-                    <img :src="'site/images/' + game.image + '.png'" :alt="game.name" class="game-image">
-                    <div class="game-info">
-                        <h3>{{ game.name }}</h3>
-                    </div>
-                </a>
-            </div>
+    <main class="game-cards-container">
+        <div class="game-card" onclick="location.href='games/spy.html'">
+            <img src="images/spy.png" alt="Шпион">
+            <h2>Шпион</h2>
+        </div>
+        <div class="game-card" onclick="location.href='games/mafia.html'">
+            <img src="images/mafia.jpg" alt="Маифя">
+            <h2>Мафия</h2>
+        </div>
+        <div class="game-card" onclick="location.href='games/chess.html'">
+            <img src="images/chess.jpg" alt="Маифя">
+            <h2>Шахматы</h2>
         </div>
     </main>
-
-    <aside class="chat-container">
-        <h2>Чат</h2>
-        <div class="chat-messages" ref="chatMessages">
-            <div v-for="message in messages" :key="message.id" class="chat-message">
-                <strong>{{ message.username }}:</strong> {{ message.text }}
-            </div>
-        </div>
-        <input type="text" v-model="newMessage" placeholder="Введите сообщение..." @keydown.enter="sendMessage">
-    </aside>
-
-    <footer>
-        <p>&copy; 2024 JoskiGames. Все права защищены.</p>
-    </footer>
-
-    <script src="main.js"></script>
 </body>
 </html>
