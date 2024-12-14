@@ -13,6 +13,7 @@ from pathlib import Path
 import os
 from datetime import timedelta
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -90,13 +91,13 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
+MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",  # URL вашего фронтенда
 ]
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:8080",  # URL вашего фронтенда
-]
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:5500']
 
 CORS_ALLOW_ALL_ORIGINS = True
 

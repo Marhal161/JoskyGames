@@ -1,10 +1,11 @@
 from django.urls import path
-from django.views.generic import TemplateView  # Импорт для рендера шаблона
 from .views.LoginView import LoginView
 from .views.LogoutView import LogoutView
+from .views.RegisterView import RegisterView
+from .views.pages import auth_page  # Импортируем auth_page
 
 urlpatterns = [
-    path('login', LoginView.as_view(), name='login'),
-    path('register', TemplateView.as_view(template_name="auth.html"), name='register'),  # Простое отображение HTML
-    path('logout', LogoutView.as_view(), name='logout'),
+    path('login/', auth_page, name='login'),  # Рендер страницы auth.html для login
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('register/', auth_page, name='register'),  # Рендер страницы auth.html для register
 ]
