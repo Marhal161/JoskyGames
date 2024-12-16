@@ -1,0 +1,128 @@
+:root {
+    --dark-blue: #1d2c3e;
+    --purple: #503556;
+    --pink: #bf568e;
+    --light-pink: #e895b3;
+    --cream: #f7dedf;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, var(--dark-blue), var(--pink));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Формы */
+.form-container {
+    background: var(--cream);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: var(--dark-blue);
+    width: 300px;
+    animation: slideUp 1.5s ease-in-out;    
+}
+
+.hidden {
+    display: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+form input {
+    display: block;
+    width: 90%;
+    padding: 0.8rem;
+    margin: 0;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background: var(--light-pink);
+    color: var(--dark-blue);
+    transition: background 0.3s ease;
+    text-align: left;
+}
+
+form input:focus {
+    background: var(--pink);
+}
+
+form button {
+    width: 90%;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 5px;
+    background: var(--purple);
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background: var(--dark-blue);
+}
+
+/* Текст переключения */
+.switch-text {
+    font-size: 0.9rem;
+    color: var(--purple);
+    margin-top: 1rem;
+}
+
+.switch-link {
+    font-weight: bold;
+    color: var(--pink);
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.switch-link:hover {
+    color: var(--dark-blue);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

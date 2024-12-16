@@ -1,0 +1,101 @@
+:root {
+    --dark-blue: #1d2c3e;
+    --purple: #503556;
+    --pink: #bf568e;
+    --light-pink: #e895b3;
+    --cream: #f7dedf;
+    --golden: #ffd700;
+    --deep-purple: #4e1c58;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, var(--dark-blue), var(--pink));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+    overflow: hidden;
+    animation: gradientShift 10s ease infinite;
+}
+
+header {
+    width: 100%;
+    background: var(--purple);
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+}
+
+.header-content h1 {
+    font-size: 2.5rem;
+    color: var(--cream);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 80px; /* Offset for fixed header */
+    padding: 1rem;
+}
+
+.game-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.game-card {
+    background: var(--cream);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--deep-purple);
+    width: 200px;
+    height: 250px; /* Увеличиваем высоту карточки */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+}
+
+.game-card img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.game-card h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--purple);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.game-card h2:hover {
+    color: var(--golden);
+}
+
+/* Анимации */
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+}

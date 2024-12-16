@@ -3,7 +3,11 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from ..serializers.LoginSerializer import LogSerializer
+from django.shortcuts import render
+from django.http import HttpResponse
 
+def login_view(request):
+    return render(request, 'authapp/auth.html')
 
 class LoginView(APIView):
     @staticmethod
