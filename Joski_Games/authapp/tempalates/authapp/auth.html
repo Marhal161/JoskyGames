@@ -1,0 +1,122 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JoskiGames</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+</head>
+<body>
+    <div id="app" class="container">
+        <!-- Форма входа -->
+        <div class="form-container" v-show="currentForm === 'login'">
+            <h2>Вход</h2>
+            <form @submit.prevent="login">
+                <input type="text" style="display: none;" autocomplete="username">
+                <input type="password" style="display: none;" autocomplete="new-password">
+                <input type="email" v-model="loginForm.email" placeholder="Почта" autocomplete="off" required>
+                <input type="password" v-model="loginForm.password" placeholder="Пароль" autocomplete="off" required>
+                <button type="submit">Войти</button>
+            </form>
+            
+            <p class="switch-text">Еще не зарегистрированы? 
+                <span class="switch-link" @click="showRegisterForm">Зарегистрироваться</span>
+            </p>
+        </div>
+
+        <!-- Форма регистрации -->
+        <div class="form-container" v-show="currentForm === 'register'">
+            <h2>Регистрация</h2>
+            <form @submit.prevent="register">
+                <input type="text" style="display: none;" autocomplete="username">
+                <input type="password" style="display: none;" autocomplete="new-password">       
+                <input type="text" v-model="registerForm.username" placeholder="Никнейм" autocomplete="off" required>
+                <input type="text" v-model="registerForm.first_name" placeholder="Имя" autocomplete="off" required>
+                <input type="text" v-model="registerForm.last_name" placeholder="Фамилия" autocomplete="off" required>
+                <input type="email" v-model="registerForm.email" placeholder="Почта" autocomplete="off" required>
+                <input type="password" v-model="registerForm.password" placeholder="Пароль" autocomplete="new-password" required>
+                <input type="password" v-model="registerForm.password_confirmation" placeholder="Подтвердите пароль" autocomplete="new-password" required>
+                <input type="tel" v-model="registerForm.phone" placeholder="Телефон" autocomplete="off" required>
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+            <p class="switch-text">Уже есть аккаунт? 
+                <span class="switch-link" @click="showLoginForm">Войти</span>
+            </p>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                currentForm: 'login',
+                loginForm: {
+                    email: '',
+                    password: ''
+                },
+                registerForm: {
+                    username: '',
+                    first_name: '',
+                    last_name: '',
+                    email: '',
+                    phone: '',
+                    password: '',
+                    password_confirmation: ''
+                }
+            },
+            methods: {
+                showRegisterForm() {
+                    this.currentForm = 'register';
+                },
+                showLoginForm() {
+                    this.currentForm = 'login';
+                },
+                async login() {
+                    try {
+                        const response = await fetch('/login', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(this.loginForm)
+                        });
+        
+                        if (!response.ok) throw new Error('Ошибка входа');
+                        // перенаправление на главную страницу после успешного входа
+                        window.location.href = '/main';
+                    } catch (error) {
+                        console.error(error);
+                        alert('Ошибка входа. Пожалуйста, попробуйте снова.');
+                    }
+                },
+                async register() {
+                    if (this.registerForm.password !== this.registerForm.password_confirmation) {
+                        alert('Пароли не совпадают');
+                        return;
+                    }
+        
+                    try {
+                        const response = await fetch('/register', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(this.registerForm)
+                        });
+        
+                        if (!response.ok) throw new Error('Ошибка регистрации');
+                        // перенаправление на главную страницу после успешной регистрации
+                        window.location.href = '/main';
+                    } catch (error) {
+                        console.error(error);
+                        alert('Ошибка регистрации. Пожалуйста, попробуйте снова.');
+                    }
+                }
+            }
+        });
+        
+    </script>
+</body>
+</html>
