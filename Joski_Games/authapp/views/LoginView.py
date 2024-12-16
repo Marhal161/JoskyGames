@@ -8,6 +8,7 @@ from django.http import HttpResponse
 
 def login_view(request):
     return render(request, 'authapp/auth.html')
+
 class LoginView(APIView):
     @staticmethod
     def post(request):
